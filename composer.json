@@ -1,0 +1,21 @@
+{
+    "name": "ndm2/github-playground",
+    "description": "for testing purposes...",
+    "type": "project",
+    "minimum-stability": "stable",
+    "require": {},
+    "require-dev": {
+        "phpstan/phpstan": "^0.6",
+        "phpunit/phpunit": "^6.1"
+    },
+    "autoload": {
+        "psr-4": {
+            "Playground\\": "src"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Playground\\Test\\": "tests"
+        }
+    }
+}
