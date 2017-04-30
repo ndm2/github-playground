@@ -40,7 +40,7 @@ before_install:
   - if [[ $COVERAGE != 1 ]]; then phpenv config-rm xdebug.ini; fi
 
 before_script:
-  - if [[ $CAKEPHP ]]; then then composer require --no-update cakephp/cakephp:~$CAKEPHP; fi
+  - if [[ $CAKEPHP ]]; then composer require --no-update cakephp/cakephp:~$CAKEPHP; fi
   - composer install --prefer-dist --no-interaction
 
 script:
