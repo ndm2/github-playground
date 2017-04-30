@@ -15,8 +15,17 @@ matrix:
   fast_finish: true
 
   include:
-    - php: 7.0
-      env: COVERAGE=1 PHPUNIT=0
+    - php: 7.1
+      env: CAKEPHP=3.0.0
+
+    - php: 7.1
+      env: CAKEPHP=3.1.0
+
+    - php: 7.1
+      env: CAKEPHP=3.2.0
+
+    - php: 7.1
+      env: CAKEPHP=3.3.0
 
     - php: 7.0
       env: PHPSTAN=1 PHPUNIT=0
@@ -24,16 +33,20 @@ matrix:
     - php: 7.1
       env: PHPSTAN=1 PHPUNIT=0
 
+    - php: 7.0
+      env: COVERAGE=1 PHPUNIT=0
+
 before_install:
-  - if [ $COVERAGE != 1 ]; then phpenv config-rm xdebug.ini; fi
+  - if [[ $COVERAGE != 1 ]]; then phpenv config-rm xdebug.ini; fi
 
 before_script:
+  - if [[ $CAKEPHP ]]; then then composer require --no-update cakephp/cakephp:~$CAKEPHP; fi
   - composer install --prefer-dist --no-interaction
 
 script:
-  - if [[ $COVERAGE = 1 ]]; then vendor/bin/phpunit --coverage-clover=clover.xml; fi
   - if [[ $PHPUNIT = 1 ]]; then vendor/bin/phpunit; fi
   - if [[ $PHPSTAN = 1 ]]; then composer require phpstan/phpstan:^0.6 && vendor/bin/phpstan analyse -l 4 -c phpstan.neon src; fi
+  - if [[ $COVERAGE = 1 ]]; then vendor/bin/phpunit --coverage-clover=clover.xml; fi
 
 after_success:
   - if [[ $COVERAGE = 1 ]]; then bash <(curl -s https://codecov.io/bash); fi
