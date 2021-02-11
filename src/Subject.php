@@ -14,8 +14,11 @@ class Subject
     public function foo($arg)
     {
         $val = null;
-        if ($arg) {
+        if ($arg === true) {
             $val = true;
+        }
+        if ($arg === 1) {
+            $val = 1;
         }
 
         return $val;
