@@ -12,7 +12,7 @@ class SubjectTest extends TestCase
     {
         $subject = new Subject();
         $this->assertNull($subject->foo(false));
-        //$this->assertTrue($subject->foo(true));
-        //$this->assertEquals(1, $subject->foo(1));
+        $this->assertTrue($subject->foo(true));
+        $this->assertEquals(1, $subject->foo(1));
     }
 }
