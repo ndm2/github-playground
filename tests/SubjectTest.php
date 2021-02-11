@@ -1,4 +1,6 @@
 <?php
+declare(strict_types=1);
+
 namespace Playground\Test;
 
 use PHPUnit\Framework\TestCase;
@@ -6,7 +8,7 @@ use Playground\Subject;
 
 class SubjectTest extends TestCase
 {
-    public function testFoo()
+    public function testFoo(): void
     {
         $subject = new Subject();
         $this->assertNull($subject->foo(false));
