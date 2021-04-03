@@ -14,5 +14,8 @@ class SubjectTest extends TestCase
         $this->assertNull($subject->foo(false));
         $this->assertTrue($subject->foo(true));
         $this->assertEquals(1, $subject->foo(1));
+        $this->assertEquals(1, $subject->foo(2));
+        $this->assertEquals(1, $subject->foo(3));
+        //$this->assertEquals(1, $subject->foo(4));
     }
 }

@@ -21,6 +21,15 @@ class Subject
         if ($arg === 1) {
             $val = 1;
         }
+        if ($arg === 2) {
+            $val = 1;
+        }
+        if ($arg === 3) {
+            $val = 1;
+        }
+        if ($arg === 4) {
+            $val = 1;
+        }
 
         return $val;
     }
