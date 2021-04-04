@@ -26,7 +26,7 @@ jobs:
             cakephp-version: '4.2.0'
             coverage: pcov
 
-    name: ${{ fromJSON('["yes", "no"]')[matrix.coverage != 'none'] }} - CakePHP ${{ matrix.cakephp-version }}
+    name: ${{ fromJSON('["Coverage", "${{ matrix.php-version }}"]')[matrix.coverage != 'none'] }} - CakePHP ${{ matrix.cakephp-version }}
 
     steps:
       - uses: actions/checkout@v2
