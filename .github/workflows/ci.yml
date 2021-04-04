@@ -26,12 +26,7 @@ jobs:
             cakephp-version: '4.2.0'
             coverage: pcov
 
-    name: |
-      if [[ ${{ matrix.coverage }} != 'none' ]]; then
-        echo "Code Coverage"
-      else
-        echo "Test 123 ${{ matrix.php-version }} - CakePHP ${{ matrix.cakephp-version }}"
-      fi
+    name: ${{ matrix.coverage != 'none' }} - CakePHP ${{ matrix.cakephp-version }}
 
     steps:
       - uses: actions/checkout@v2
