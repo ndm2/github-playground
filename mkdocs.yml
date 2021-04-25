@@ -1,0 +1,8 @@
+site_name: Playground
+theme:
+  name: readthedocs
+  highlightjs: true
+  hljs_languages:
+    - bash
+    - php
+  prev_next_buttons_location: none
