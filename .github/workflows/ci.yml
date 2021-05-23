@@ -10,7 +10,7 @@ on:
 
 jobs:
   tests:
-    runs-on: ${{ fromJSON('["ubuntu-18.04", "ubuntu-20.04"]')[matrix.db-type == 'sqlite'] }}
+    runs-on: ${{ ["ubuntu-18.04", "ubuntu-20.04"][matrix.db-type == 'sqlite'] }}
     strategy:
       fail-fast: false
       matrix:
