@@ -33,7 +33,20 @@ class SubjectTest extends TestCase
             $supportsWindowFunctions = $driver->supportsWindowFunctions();
         }
 
-        var_dump(compact('driverClass', 'version', 'supportsCTEs', 'supportsWindowFunctions'));
+        $isMariaDb = false;
+        if ($driver instanceof Driver\Mysql && $driver->isMariadb()) {
+            $isMariaDb = true;
+        }
+
+        var_dump(
+            compact(
+                'driverClass',
+                'isMariaDb',
+                'version',
+                'supportsCTEs',
+                'supportsWindowFunctions'
+            )
+        );
 
         $subject = new Subject();
         $subject->bar();
