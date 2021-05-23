@@ -69,14 +69,16 @@ jobs:
       - name: Setup SQL Server 2019
         if: matrix.db-type == 'sqlsrv' && matrix.php-version != '7.2'
         run: |
-          docker run --rm --name=sqlsrv -e 'ACCEPT_EULA=Y' -e 'SA_PASSWORD=Sql!Server' -e 'MSSQL_PID=Express' -p 1433:1433 -d mcr.microsoft.com/mssql/server:2019-CU10-ubuntu-20.04
+          docker run --rm --name=sqlsrv -e 'ACCEPT_EULA=Y' -e 'SA_PASSWORD=Sql!Server' -e 'MSSQL_PID=Express' -p 1433:1433 \
+            -d mcr.microsoft.com/mssql/server:2019-CU10-ubuntu-20.04
           sleep 10
           docker exec sqlsrv /opt/mssql-tools/bin/sqlcmd -S localhost -U sa -P Sql!Server -Q "create database test;"
 
       - name: Setup SQL Server 2017
         if: matrix.db-type == 'sqlsrv' && matrix.php-version == '7.2'
         run: |
-          docker run --rm --name=sqlsrv -e 'ACCEPT_EULA=Y' -e 'SA_PASSWORD=Sql!Server' -e 'MSSQL_PID=Express' -p 1433:1433 -d mcr.microsoft.com/mssql/server:2017-CU22-ubuntu-16.04
+          docker run --rm --name=sqlsrv -e 'ACCEPT_EULA=Y' -e 'SA_PASSWORD=Sql!Server' -e 'MSSQL_PID=Express' -p 1433:1433 \
+            -d mcr.microsoft.com/mssql/server:2017-CU22-ubuntu-16.04
           sleep 10
           docker exec sqlsrv /opt/mssql-tools/bin/sqlcmd -S localhost -U sa -P 'Sql!Server' -Q "create database test;"
 
